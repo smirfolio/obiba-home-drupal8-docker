@@ -1,0 +1,25 @@
+version: '3'
+services:
+  obiba-home-drupal8-docker:
+#    image: obiba/obiba-home-drupal8-docker:latest
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8888:80"
+    restart: always
+    extra_hosts:
+        - mica-host.serv:172.20.0.1
+        - agate-host.serv:172.20.0.1
+  db:
+    image: mariadb:10.2
+    environment:
+      MYSQL_DATABASE: drupal8_obiba
+      MYSQL_ROOT_PASSWORD: 1234
+    restart: always
+    ports:
+      - "3366:3306"
+networks:
+    default:
+        external:
+            name: drupalNet
