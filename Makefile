@@ -11,7 +11,7 @@ docker-up:
 	docker-compose -f docker-compose.yml up -d --build
 
 docker-shell:
-	docker-compose exec docker-obiba-drupal bash
+	docker-compose exec obiba-home-drupal8-docker bash
 
 docker-logs:
 	docker-compose logs -f
